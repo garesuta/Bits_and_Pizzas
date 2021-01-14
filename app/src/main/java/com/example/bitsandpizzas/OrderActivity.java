@@ -7,6 +7,9 @@ import android.view.View;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.ActionBar;
 
+import android.widget.Toast;
+import com.google.android.material.snackbar.Snackbar;
+
 public class OrderActivity extends AppCompatActivity {
 
     @Override
@@ -19,6 +22,19 @@ public class OrderActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
     public void onClickDone(View view){
-
+        CharSequence text = "Your order has been updated";
+        int duration = Snackbar.LENGTH_SHORT;
+        View rootView = findViewById(R.id.coordinator);
+        Snackbar snackbar = Snackbar.make(rootView,text,duration);
+        snackbar.setAction("Undo", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast toast = Toast.makeText(OrderActivity.this, "Undone!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+        snackbar.show();
     }
+
+
 }
