@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.graphics.drawable.Drawable;
 import androidx.core.content.ContextCompat;
 
-class CaptionedImagesAdapter extends RecyclerView.CaptionedImagesAdapter<CaptionedImagesAdapter.ViewHolder>{
+class CaptionedImagesAdapter extends
+        RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder>{
     private String[] captions;
     private int[] imageIds;
 
@@ -22,20 +23,21 @@ class CaptionedImagesAdapter extends RecyclerView.CaptionedImagesAdapter<Caption
             cardView = v;
         }
         }
-        public CaptionedImagesAdapter(String[] captions, int[] imageIds){
+    public CaptionedImagesAdapter(String[] captions, int[] imageIds){
             this.captions = captions;
             this.imageIds = imageIds;
         }
-        @Override
-        public int getItemCount(){
+
+    @Override
+    public int getItemCount(){
         return captions.length;
         }
-        @Override
-        public CaptionedImagesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    @Override
+    public CaptionedImagesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         CardView cv = (CardView)LayoutInflater.from(parent.getContext()).inflate(R.layout.card_captioned_image,parent,false);
         return new ViewHolder(cv);
         }
-        @Override
+    @Override
     public void onBindViewHolder(ViewHolder holder, int position){
         CardView cardView = holder.cardView;
         ImageView imageView = (ImageView)cardView.findViewById(R.id.info_image);
@@ -45,6 +47,5 @@ class CaptionedImagesAdapter extends RecyclerView.CaptionedImagesAdapter<Caption
         TextView textView =(TextView)cardView.findViewById(R.id.info_text);
         textView.setText(captions[position]);
         }
-
     }
 
