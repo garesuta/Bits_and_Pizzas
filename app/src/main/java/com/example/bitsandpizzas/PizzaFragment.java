@@ -21,7 +21,7 @@ public class PizzaFragment extends Fragment {
      }
      int[] pizzaImages = new int[Pizza.pizzas.length];
      for(int i=0;i<pizzaImages.length;i++){
-         pizzaImages = Pizza.pizzas[i].getImageResourceId();
+         pizzaImages[i] = Pizza.pizzas[i].getImageResourceId();
      }
      CaptionedImagesAdapter adapter = new CaptionedImagesAdapter(pizzaNames,pizzaImages);
      pizzaRecycler.setAdapter(adapter);
