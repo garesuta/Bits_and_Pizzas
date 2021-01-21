@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.recyclerview.widget.GridLayoutManager;
 
 public class PizzaFragment extends Fragment {
 
@@ -25,6 +25,8 @@ public class PizzaFragment extends Fragment {
      }
      CaptionedImagesAdapter adapter = new CaptionedImagesAdapter(pizzaNames,pizzaImages);
      pizzaRecycler.setAdapter(adapter);
+     GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
+     pizzaRecycler.setLayoutManager(layoutManager);
      return pizzaRecycler;
     }
 }
