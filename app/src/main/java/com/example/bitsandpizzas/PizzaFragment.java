@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.GridLayoutManager;
+import android.content.Intent;
 
 public class PizzaFragment extends Fragment {
 
@@ -27,6 +28,15 @@ public class PizzaFragment extends Fragment {
      pizzaRecycler.setAdapter(adapter);
      GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
      pizzaRecycler.setLayoutManager(layoutManager);
+
+     adapter.setListener(new CaptionedImagesAdapter.Listener() {
+         @Override
+         public void onClick(int position) {
+             Intent intent = new Intent(getActivity(),PizzaDetailActivity.class);
+             intent.putExtra(PizzaDetailActivity.EXTRA_PIZZA_ID,position);
+             getActivity().startActivity(intent);
+         }
+     });
      return pizzaRecycler;
     }
 }
